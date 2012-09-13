@@ -1,0 +1,7 @@
+<apex:page controller="ScheduledJobManagerController">
+  <apex:sectionHeader title="Scheduled Job Manager"/>
+  <apex:pagemessages />
+  <apex:form >
+    <apex:commandButton action="{!startJob}" value="Start Job"/>
+  </apex:form>
+</apex:page>

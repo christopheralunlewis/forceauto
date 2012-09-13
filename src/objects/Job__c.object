@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Outstanding jobs that have to processed.</description>
+    <fields>
+        <fullName>Account__c</fullName>
+        <description>The account object related to the job (if applicable).</description>
+        <inlineHelpText>The account object related to the job (if applicable).</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Jobs</relationshipLabel>
+        <relationshipName>Jobs</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <description>The opportunity object related to the job (if applicable).</description>
+        <inlineHelpText>The opportunity object related to the job (if applicable).</inlineHelpText>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Jobs</relationshipLabel>
+        <relationshipName>Jobs</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <description>A task priority classifier, between 1 - 9: 1 being the highest priority, 9 being the lowest priority</description>
+        <inlineHelpText>A task priority classifier, between 1 - 9: 1 being the highest priority, 9 being the lowest priority</inlineHelpText>
+        <label>Priority</label>
+        <precision>1</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+    </fields>
+    <fields>
+        <fullName>Time_Processed__c</fullName>
+        <description>The time the job was processed by the scheduler</description>
+        <inlineHelpText>The time the job was processed by the scheduler</inlineHelpText>
+        <label>Time Processed</label>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>A classifier that indicates the type of job to be processed.</description>
+        <inlineHelpText>A classifier that indicates the type of job to be processed.</inlineHelpText>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Email Message</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fax Message</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Supplier Paid</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Supplier Received</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <label>Job</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Priority__c</columns>
+        <columns>Time_Processed__c</columns>
+        <columns>Type__c</columns>
+        <columns>Account__c</columns>
+        <columns>Opportunity__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>J-{00000000}</displayFormat>
+        <label>Job Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Jobs</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Priority__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Time_Processed__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

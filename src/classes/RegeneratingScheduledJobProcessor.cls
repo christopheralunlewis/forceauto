@@ -1,37 +1,43 @@
+/**********************************************************************************************************
+*	Dreamforce 2012 Session "Using Force.com to Automate Established Business Processes" sample code
+*	by Christopher Alun Lewis (chris.lewis@desynit.com).
+*
+*	This code is intended for demonstration / educational / personal use. Live implemenation should 
+*   not be attempted without creating appropriate test methods and proper understanding of the implications 
+*   involved in deployment.
+*
+*   This code is distributed on an "AS IS" BASIS,
+*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*   This code implementation is not suppported or endorsed by Esker Fax.
+**********************************************************************************************************/
+
 /*  
-    A scheduable job class that manages a batch run of web service update calls to the System I and Esker Fax   
-    This scheduable job is engineered to be run more than once an hour.     
-    Every time the job runs, at the end of execution, it aborts itself.    
-    It may also, depending on logic, add a new instance of the job to run in the future.
+	CLASS DESCRIPTION:
+
+    A scheduable global Apex class that uses the job manager class to process system updates.   
+    This scheduable job is engineered to provide rapid managed updates whilst staying within governor limits.     
+    Every time the scheduled job runs, at the end of execution, it aborts itself, 
+    before scheduling a new instance of the job to be run a short period afterwards. 
+    
 */
 global class RegeneratingScheduledJobProcessor implements Schedulable 
 {      
+    // This represents the time interval (in minutes) between one scheduled job ending and the next one beginning. 
+    global static final Integer interval = 5;
      
-    global Integer getInterval()
-    {
-        return 1;
-    }
-     
+    // Main execute method, called when the scheduled instance runs. 
     global void execute (SchedulableContext sc) 
-    {   
-        system.debug('sc ' + sc);     
+    {       
         System.abortJob(sc.getTriggerId());
-        processOutstandingTasks();
+        JobManager.processOutstandingJobs();
         scheduleNextRun();
-        
     }        
      
-    // Execute a single batch of updates    
-    public static void processOutstandingTasks()
-    {
-        Account testAccount = new Account (Name = 'Test Account2');
-        insert testAccount;
-    }        
-     
-    // Schedule a future callout of the iSeries update job.    
+    // Schedule a future callout of the update job. 
+    // The job name includes the scheduled date and time, to make it clearer exactly when the job is set to run.   
     public static void scheduleNextRun()
     {                                       
-        DateTime nextScheduledTime = System.now().addMinutes(1);                
+        DateTime nextScheduledTime = System.now().addMinutes(interval);                
         String scheduleString = nextScheduledTime.format('ss mm HH dd MM ? yyyy');         
         String jobName = 'Job Processor - '+ nextScheduledTime.format('dd/MM/yyyy - HH:mm:ss');              
         

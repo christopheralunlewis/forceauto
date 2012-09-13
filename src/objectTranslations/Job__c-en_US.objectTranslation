@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <value>Job</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Jobs</value>
+    </caseValues>
+    <fields>
+        <help><!-- The account object related to the job (if applicable). --></help>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Jobs --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The opportunity object related to the job (if applicable). --></help>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Jobs --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- A task priority classifier, between 1 - 9: 1 being the highest priority, 9 being the lowest priority --></help>
+        <label><!-- Priority --></label>
+        <name>Priority__c</name>
+    </fields>
+    <fields>
+        <help><!-- The time the job was processed by the scheduler --></help>
+        <label><!-- Time Processed --></label>
+        <name>Time_Processed__c</name>
+    </fields>
+    <fields>
+        <help><!-- A classifier that indicates the type of job to be processed. --></help>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Email Message</masterLabel>
+            <translation><!-- Email Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fax Message</masterLabel>
+            <translation><!-- Fax Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supplier Paid</masterLabel>
+            <translation><!-- Supplier Paid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supplier Received</masterLabel>
+            <translation><!-- Supplier Received --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>
