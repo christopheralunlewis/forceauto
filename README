@@ -1,0 +1,13 @@
+
+This code accompanies the Dreamforce 2012 presentation "Using Force.com to automate established business processes".
+
+It contains example force.com apex controllers, visualforce pages, and a custom object that enable developers to create a regenerating scheduled job and Esker Fax on Demand API integration.
+
+If you have any queries, please get in touch via email (chris.lewis@desynit.com)
+
+*prerequisites*
+
+In order to install the related code, you will need a developer sandbox or developer org (for free at www.developerforce.com).
+
+If you want to communicate with Esker fax web services, you will need an Esker fax account, for more information please contact an Esker representative or visit www.Esker.com .
+
